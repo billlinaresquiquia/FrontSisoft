@@ -1,0 +1,13 @@
+@import "primeicons/primeicons.css";
+.content-image{
+  background-color: hsl(210, 26%, 84%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 4%;
+}
+
+
+
+
+

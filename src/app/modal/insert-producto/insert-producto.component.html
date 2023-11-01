@@ -1,0 +1,371 @@
+<!--<div class="container my-5">
+    <div class="row d-flex justify-content-center">
+      <div class="container-insert-product col-md-6">
+        <div class="card">
+          <form action="" (submit)="onFileSelected($event)">
+          <div class="form-outline mb-4">
+            <label for="imagen">Imagen:</label>
+            <input type="file" (change)="onFileSelected($event)" accept="image/*">
+          </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form1">Nombre producto</label>
+                    <input type="text" class="form-control" />
+
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="typeNumber">Precio</label>
+                  <div class="form-outline mb-4">
+                    <input type="number"  class="form-control"  />
+                  </div>
+                </div>
+              </div>
+              <label class="form-label" for="typeNumber">Categoria </label>
+                <div class="form-outline mb-4">
+                  <select class="select" >
+                    <option value="1">PC</option>
+                    <option value="2">LAPTOP</option>
+                    <option value="3">MONITORES</option>
+                    <option value="4">IMPRESORAS</option>
+                    <option value="5">CAMARAS DE SEGURIDAD</option>
+                  </select>
+                </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="textAreaExample">Descripcion</label>
+                <textarea class="form-control" id="textAreaExample" rows="4" ></textarea>
+
+              </div>
+
+                <div class="row">
+                  <div class="col-md-8">
+                    <p-inplace [closable]="true">
+                      <ng-template pTemplate="display">
+                        <button type="button" class="btn btn-outline-dark">¿aplicar descuento?</button>
+                      </ng-template>
+                      <ng-template pTemplate="content">
+                          <input type="number" value="0" pInputText  />
+                      </ng-template>
+                    </p-inplace>
+                  </div>
+                  <div class="col-md-4">
+                    <p-inplace [closable]="true">
+                      <ng-template pTemplate="display">
+                        <button type="button" class="btn btn-outline-dark">¿aplicar valoracion?</button>
+                      </ng-template>
+                      <ng-template pTemplate="content">
+                        <p-rating   ></p-rating>
+                      </ng-template>
+                    </p-inplace>
+                  </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="card-footer border-0 bg-light py-3 text-end">
+              <button type="submit"  class="btn btn-primary btn-rounded">Next</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>-->
+<!---
+ <div>
+    <h2>Cargar Imagen</h2>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*">
+
+
+    <button type="submit">Cargar Imagen</button>
+  </div>
+
+  <img *ngIf="product" [src]="getImageUrl(product)" alt="Imagen de producto">-->
+
+
+
+
+<!-- insert-producto.component.html -->
+
+
+
+
+<div style="height: 100px;"></div>
+
+
+<div class="card card-cascade narrower">
+
+
+  <div
+    class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+
+    <div>
+      <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+        <i class="fa fa-search"></i>
+      </button>
+      <input type="text">
+    </div>
+
+    <a  class="white-text mx-3">Productos</a>
+
+    <div>
+      <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#agregarmodal"><i class="fa fa-plus"></i></a>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="px-4">
+
+    <div class="table-wrapper">
+      <table class="table table-hover mb-0">
+
+        <thead>
+          <tr>
+            <th>
+
+            </th>
+            <th class="th-lg">
+              <a>Nombre
+
+              </a>
+            </th>
+            <th class="th-lg">
+              <a >Precio
+
+              </a>
+            </th>
+            <th class="th-lg">
+              <a >Descripcion
+
+              </a>
+            </th>
+            <th class="th-lg">
+              <a >Categoria
+
+              </a>
+            </th>
+            <th class="th-lg">
+              <a >Descuento
+
+              </a>
+            </th>
+            <th class="th-lg">
+              <a >Valoracion
+
+              </a>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let producto of productos">
+            <th scope="row">
+              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <!-- Agrega el evento (click) para llamar a la función deleteProduct con el ID del producto -->
+              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"
+                (click)="deleteProduct(producto.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+
+
+            </th>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.categoriaId }}</td>
+            <td>{{ producto.descuento }}</td>
+            <td>{{ producto.valoracion }}</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+<!---
+<div class="modal fade" id="agregarmodal" tabindex="-1" aria-labelledby="agregarmodal" aria-hidden="true">
+	<div class="modal-dialog ">
+		<div class="modal-content ">
+			<div class="modal-body">
+        <div class="container">
+          <h2>Cargar Producto</h2>
+          <form (ngSubmit)="cargarProducto()" #productoForm="ngForm">
+            <div class="form-group">
+              <label for="nombre">Nombre:</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="productData.nombre">
+            </div>
+            <div class="form-group">
+              <label for="precio">Precio:</label>
+              <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="productData.precio">
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripción:</label>
+              <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="productData.descripcion"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="descuento">Descuento:</label>
+              <input type="number" class="form-control" id="descuento" name="descuento" [(ngModel)]="productData.descuento">
+            </div>
+            <div class="form-group">
+              <label for="categoriaId">Categoría ID:</label>
+              <input type="number" class="form-control" id="categoriaId" name="categoriaId" [(ngModel)]="productData.categoriaId">
+            </div>
+            <div class="form-group">
+              <label for="valoracion">Valoración:</label>
+              <input type="number" class="form-control" id="valoracion" name="valoracion" [(ngModel)]="productData.valoracion">
+            </div>
+
+              <div class="input-div">
+                <input class="input"  type="file" id="file1" name="file1" (change)="onFileSelected($event, 1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon"><polyline points="16 16 12 12 8 16"></polyline><line y2="21" x2="12" y1="12" x1="12"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+              </div>
+
+              <label for="file1">Imagen 1:</label>
+              <input type="file" class="form-control-file" id="file1" name="file1" (change)="onFileSelected($event, 1)">
+            <div class="form-group">
+              <label for="file2">Imagen 2:</label>
+              <input type="file" class="form-control-file" id="file2" name="file2" (change)="onFileSelected($event, 2)">
+            </div>
+            <button type="submit" class="btn btn-primary">Cargar Producto</button>
+          </form>
+        </div>
+
+
+			</div>
+		</div>
+	</div>
+	</div>-->
+
+
+
+
+
+
+
+
+
+  <div class="modal fade" id="agregarmodal" tabindex="-1" aria-labelledby="agregarmodal" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content ">
+        <div >
+          <div >
+            <div class="row d-flex justify-content-center">
+              <div >
+                <div class="card">
+                  <form (ngSubmit)="cargarProducto()" #productoForm="ngForm">
+                    <ngx-dropzone
+                      (mouseenter)="currentDropzone = 'file1'"
+                      (mouseleave)="currentDropzone = null"
+                      (change)="onSelect($event)"
+                    >
+                      <ngx-dropzone-label>Imagen producto 1</ngx-dropzone-label>
+                      <input type="file" ngxFileDrop [multiple]="true" accept="image/*" style="display: none;">
+                      <ngx-dropzone-image-preview
+                        ngProjectAs="ngx-dropzone-preview"
+                        *ngIf="image1 !== null"
+                        [file]="image1"
+                        [removable]="true"
+                        (removed)="onRemove(image1)"
+                      ></ngx-dropzone-image-preview>
+                      <ngx-dropzone-image-preview
+                        ngProjectAs="ngx-dropzone-preview"
+                        *ngIf="image2 !== null"
+                        [file]="image2"
+                        [removable]="true"
+                        (removed)="onRemove(image2)"
+                      ></ngx-dropzone-image-preview>
+                    </ngx-dropzone>
+
+
+
+
+
+
+
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="form-outline mb-4">
+                            <input type="text" id="nombre" name="nombre" required [(ngModel)]="productData.nombre" class="form-control" placeholder="Nombre de producto" />
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-outline mb-4">
+                            <input   type="number"  id="precio" name="precio" [(ngModel)]="productData.precio" class="form-control" placeholder="Precio en S/"  />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="productData.descripcion" rows="4" placeholder="Descripcion"></textarea>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form3">Categoria:  </label>
+                        <select id="categoria" name="categoria" [(ngModel)]="productData.categoriaId">
+                          <option value="1">pc</option>
+                          <option value="2">laptop</option>
+                          <option value="3">monitor</option>
+                          <option value="4">impresora</option>
+                          <option value="parrot">camara de seguridad</option>
+                        </select>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5">
+                          <p-inplace [closable]="true">
+                            <ng-template pTemplate="display">
+                              <button type="button" class="btn btn-outline-dark">¿aplicar descuento?</button>
+                            </ng-template>
+                            <ng-template pTemplate="content">
+                                <input type="number" value="0" pInputText id="descuento" name="descuento" [(ngModel)]="productData.descuento" />
+                            </ng-template>
+                          </p-inplace>
+                        </div>
+                        <div class="col-md-6">
+                          <p-inplace [closable]="true">
+                            <ng-template pTemplate="display">
+                              <button type="button" class="btn btn-outline-dark">¿aplicar valoracion?</button>
+                            </ng-template>
+                            <ng-template pTemplate="content">
+                              <input type="number" pInputText  name="valoracion" [(ngModel)]="productData.valoracion">
+                            </ng-template>
+                          </p-inplace>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-footer border-0 bg-light py-3 text-end">
+                      <button type="submit" class="btn btn-primary btn-rounded">Next</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div style="height: 100px;"></div>

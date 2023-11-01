@@ -1,0 +1,43 @@
+
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css'>
+<div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
+  <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+    <div class="col hp" *ngFor="let producto of productosPorCategoria">
+      <div class="card h-100 shadow-sm"   data-bs-toggle="modal" data-bs-target="#viewModal">
+        <a href="#">
+          <img [src]="producto.imagen" class="card-img-top" alt="product.title" />
+        </a>
+
+        <div class="bg-danger label-top shadow-sm ">
+          <a class="text-white" href="#">{{producto.nombre}}</a>
+        </div>
+        <div class="card-body">
+          <div class="clearfix mb-3 ">
+            <span class="float-start badge rounded-pill bg-success">{{producto.precio}}</span>
+
+            <span class="float-end"><a href="#" class="small text-muted text-uppercase aff-link">reviews</a></span>
+          </div>
+          <h5 class="card-title">
+            <a target="_blank" href="#">{{producto.descripcion}}</a>
+          </h5>
+
+          <div class="d-grid gap-2 my-4 bg-warning">
+
+            <a  class="btn btn-warning bold-btn" (click)="agregarAlCarrito(producto)" >add to cart</a>
+
+          </div>
+          <div class="clearfix mb-1">
+
+            <span class="float-start"><a (click)="abrirviewcart(producto)"><i class="mb-3 pi pi-info text-2xl text-color-secondary"></i></a></span>
+
+            <span class="float-end">
+              <i class="mb-3 pi pi-heart-fill text-2xl text-color-secondary"></i>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
