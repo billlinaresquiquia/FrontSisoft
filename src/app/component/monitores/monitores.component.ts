@@ -4,7 +4,6 @@ import { Product } from 'src/app/Interfaces/product'
 import { Router } from '@angular/router';
 import { ViewProductoComponent } from 'src/app/modal/view-producto/view-producto.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2';
 @Component({
   selector: 'app-monitores',
   templateUrl: './monitores.component.html',
@@ -53,6 +52,12 @@ export class MonitoresComponent {
     const modalRef = this.modalService.open(ViewProductoComponent, { size: 'lg' });
     modalRef.componentInstance.producto = producto;
   }
+
+  seleccionarProducto(producto: Product) {
+    this.selectedProduct = producto;
+    this.agregarAlCarrito(producto)
+  }
+
   agregarAlCarrito(producto: any) {
     producto.cantidad = 1;
     // Agregamos el producto al carrito
@@ -60,13 +65,6 @@ export class MonitoresComponent {
 
     // Imprimimos el producto en la consola
     console.log('Producto agregado al carrito:', producto);
-    Swal.fire({
-      title: 'Carrito',
-      text: 'Producto agregado con exito',
-      imageUrl:producto.imagen ,
-      imageWidth: 200,
-      imageHeight: 200,
-      imageAlt: 'Custom image',
-    });
+   console.log("producto agregado")
   }
 }

@@ -1,63 +1,156 @@
-<div style="height: 100px;"></div>
-<div class="section-bg">
-    <div class="contact-section">
-        <div class="container">
-            <h2 class="hny-title text-center">Contacta con nosotros</h2>
-            <!-- Resto de tu contenido -->
-        </div>
-    </div>
-</div>
-
-
-<!-- contacts -->
-<section class="w3l-contacts-8">
-    <div class="contacts-9 section-gap py-5">
-        <div class="container py-lg-5">
-            <div class="row top-map">
-                <div class="col-lg-6 partners">
-                    <div class="cont-details">
-                        <h3 class="hny-title mb-0">Ponerse en <span class="highlight">contacto</span></h3>
-                        <p class="mb-5">Estamos listos para guiarlo hacia el futuro con Servicios</p>
-                        <p class="margin-top"><span class="texthny">Llámanos: </span> <a href="tel:+(21) 255 999 8899">956167490</a></p>
-                        <p> <span class="texthny">Correo: </span> <a href="mailto:info@example.com">info@example.com</a></p>
-                        <p class="margin-top">Lima 476, Ica 11000 </p>
+<div style="height: 20vh;"></div>
+<!--====== CONTACT ONE PART START ======-->
+<section class="contact-area">
+  <div class="container">
+     <div class="row">
+        <div class="col-xl-7 col-lg-8">
+           <div class=" mt-45">
+              <h3 class="title">Ponerse en contacto</h3>
+           </div>
+           <div class="contact-form form-style-four mt-15">
+              <form action="#">
+                 <div class="row">
+                    <div class="col-md-6">
+                       <div class="form-input mt-15">
+                          <label>Nombre completo</label>
+                          <div class="input-items default">
+                             <i class="lni lni-user"></i>
+                             <input type="text"  />
+                          </div>
+                       </div>
+                       <!-- form input -->
                     </div>
-                    <div class="hours">
-                        <h3 class="hny-title">Horas <span>Laborales</span></h3>
-                        <h6>Atencion al cliente:</h6>
-                        <p>Lunes a Sabado 9.00 am - 6.00 pm</p>
-                        <p>Domingo cerrado</p>
+                    <div class="col-md-6">
+                       <div class="form-input mt-15">
+                          <label>correo</label>
+                          <div class="input-items default">
+                             <i class="lni lni-envelope"></i>
+                             <input type="text"  />
+                          </div>
+                       </div>
+                       <!-- form input -->
                     </div>
-                </div>
-                <div class="col-lg-6 map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15480.667168332158!2d-75.7275929!3d-14.0673262!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9110e2bd8e6bdad7%3A0x9d6d8127e9fbc6ad!2sSisoft%20Sac!5e0!3m2!1ses!2spe!4v1696704130883!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
+                    <div class="col-md-6">
+                       <div class="form-input mt-15">
+                          <label>Telefono</label>
+                          <div class="input-items default">
+                             <i class="lni lni-phone"></i>
+                             <input type="text" />
+                          </div>
+                       </div>
+                       <!-- form input -->
+                    </div>
+                    <div class="col-md-6">
+                       <div class="form-input mt-15">
+                          <label>Titulo</label>
+                          <div class="input-items default">
+                             <i class="lni lni-bubble"></i>
+                             <input type="text"  />
+                          </div>
+                       </div>
+                       <!-- form input -->
+                    </div>
+                    <div class="col-md-12">
+                       <div class="form-input mt-15">
+                          <label>Mensaje</label>
+                          <div class="input-items default">
+                             <i class="lni lni-pencil-alt"></i>
+                             <textarea
+
+                                ></textarea>
+                          </div>
+                       </div>
+                       <!-- form input -->
+                    </div>
+                    <div class="col-md-12">
+                       <div class="single-form mt-15">
+                          <div class="input-form rounded-buttons">
+                             <button
+                                class="btn primary-btn rounded-full"
+                                (click)="abrirClienteCorreo()" style="border: 1px solid blue;"
+                                >
+                             Enviar
+                             </button>
+                          </div>
+                       </div>
+                       <!-- single form -->
+                    </div>
+                 </div>
+                 <!-- row -->
+              </form>
+           </div>
+           <!-- contact form -->
         </div>
-    </div>
-    <div class="map-content-9 form-bg-img">
-        <div class="layer section-gap py-5">
-            <div class="container py-lg-5">
-                <div class="form">
-                    <h3 class="hny-title two text-center">Rellenar el formulario</h3>
-                    <form action="https://sendmail.w3layouts.com/submitForm" class="mt-md-5 mt-4 contact-form" method="post">
-                        <div class="input-grids">
-                            <input type="text" name="w3lName" id="w3lName" placeholder="Name">
-                            <input type="email" name="w3lSender" id="w3lSender" placeholder="Email" required="" />
-                            <input type="subject" name="w3lSubject" id="w3lSubject" placeholder="Subject" required="">
-                        </div>
-                        <div class="input-textarea">
-                            <textarea name="w3lMessage" id="w3lMessage" placeholder="Message" required=""></textarea>
-                        </div>
-                        <button type="submit" class="btn">enviar</button>
-                    </form>
-                </div>
-            </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 offset-xl-1">
+           <div class=" mt-5">
+              <h3 class="title">Informacion contacto</h3>
+           </div>
+           <div class="contact-info">
+              <ul class="info">
+                 <li>
+                    <div class="single-info">
+                       <div class="info-icon">
+                          <i class="lni lni-map-marker"></i>
+                       </div>
+                       <div class="info-content">
+                          <p class="text">
+                            Lima 476, Ica 11000
+                          </p>
+                       </div>
+                    </div>
+                    <!-- single info -->
+                 </li>
+                 <li>
+                    <div class="single-info">
+                       <div class="info-icon">
+                          <i class="lni lni-phone"></i>
+                       </div>
+                       <div class="info-content">
+                          <p class="text">956 167 490</p>
+                       </div>
+                    </div>
+                    <!-- single info -->
+                 </li>
+
+                 <li>
+                    <div class="single-info">
+                       <div class="info-icon">
+                          <i class="lni lni-envelope"></i>
+                       </div>
+                       <div class="info-content">
+                          <p class="text">admin@uideck.com</p>
+                       </div>
+                    </div>
+                    <!-- single info -->
+                 </li>
+              </ul>
+              <ul class="social">
+                 <li>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.1667923139357!2d-75.73016782558051!3d-14.067326186358267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9110e2bd8e6bdad7%3A0x9d6d8127e9fbc6ad!2sSisoft%20Sac!5e0!3m2!1ses!2spe!4v1702612841329!5m2!1ses!2spe" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                 </li>
+                 <!--<li>
+                    <a href="javascript:void(0)">
+                    <i class="lni lni-twitter-original"></i>
+                    </a>
+                 </li>
+                 <li>
+                    <a href="javascript:void(0)">
+                    <i class="lni lni-instagram-original"></i>
+                    </a>
+                 </li>
+                 <li>
+                    <a href="javascript:void(0)">
+                    <i class="lni lni-linkedin-original"></i>
+                    </a>
+                 </li>-->
+              </ul>
+
+           </div>
+           <!-- contact-info -->
         </div>
-    </div>
+     </div>
+     <!-- row -->
+  </div>
+  <!-- container -->
 </section>
-
-  <!-- //contacts -->
-
-
-  
+<!--====== CONTACT ONE PART ENDS ======-->

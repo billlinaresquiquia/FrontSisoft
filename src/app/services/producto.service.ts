@@ -10,7 +10,7 @@ export class ProductoService {
   private productosEnCarrito: any[] = [];
   private apiUrl = 'https://localhost:7285/api/Product';
 
-  
+
   agregarAlCarrito(producto: any) {
     this.productosEnCarrito.push(producto);
   }
@@ -25,7 +25,7 @@ export class ProductoService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/list`);
   }
-  
+
   getProductsByCategory(categoriaId: number): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/categoria/${categoriaId}`).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -34,7 +34,7 @@ export class ProductoService {
       })
     );
   }
-  
+
   uploadProduct(productData: FormData): Observable<any> {
     const headers = new HttpHeaders().append('Accept', 'application/json'); // Corrección aquí
     const options = { headers: headers };
@@ -52,7 +52,7 @@ export class ProductoService {
       'Content-Type': 'application/json' // Asegúrate de que el tipo de contenido sea JSON si estás enviando datos JSON
     });
     const options = { headers: headers };
-  
+
     return this.http.put<any>(url, updatedProductData, options).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Error al actualizar el producto:', error);
@@ -63,7 +63,7 @@ export class ProductoService {
 
   deleteProduct(id: number): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
-  
+
     return this.http.delete<any>(url).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Error al eliminar el producto:', error);
@@ -71,8 +71,9 @@ export class ProductoService {
       })
     );
   }
-  
-  
 
-  
+
+
+
+
 }

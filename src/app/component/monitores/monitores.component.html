@@ -1,43 +1,62 @@
 
-
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css'>
-<div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
-  <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-    <div class="col hp" *ngFor="let producto of productosPorCategoria">
-      <div class="card h-100 shadow-sm"   data-bs-toggle="modal" data-bs-target="#viewModal">
-        <a href="#">
-          <img [src]="producto.imagen" class="card-img-top" alt="product.title" />
-        </a>
-
-        <div class="bg-danger label-top shadow-sm ">
-          <a class="text-white" href="#">{{producto.nombre}}</a>
-        </div>
-        <div class="card-body">
-          <div class="clearfix mb-3 ">
-            <span class="float-start badge rounded-pill bg-success">{{producto.precio}}</span>
-
-            <span class="float-end"><a href="#" class="small text-muted text-uppercase aff-link">reviews</a></span>
+<!-- Start Trending Product Area -->
+<section class="trending-product section" >
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="section-title">
+                  <h2>Lo mejor de monitores</h2>
+              </div>
           </div>
-          <h5 class="card-title">
-            <a target="_blank" href="#">{{producto.descripcion}}</a>
-          </h5>
-
-          <div class="d-grid gap-2 my-4 bg-warning">
-
-            <a  class="btn btn-warning bold-btn" (click)="agregarAlCarrito(producto)" >add to cart</a>
-
-          </div>
-          <div class="clearfix mb-1">
-
-            <span class="float-start"><a (click)="abrirviewcart(producto)"><i class="mb-3 pi pi-info text-2xl text-color-secondary"></i></a></span>
-
-            <span class="float-end">
-              <i class="mb-3 pi pi-heart-fill text-2xl text-color-secondary"></i>
-
-            </span>
-          </div>
-        </div>
       </div>
-    </div>
+      <div class="row">
+          <div class="col-lg-3 col-md-6 col-12" *ngFor="let producto of productosPorCategoria" (click)="seleccionarProducto(producto)" >
+              <!-- Start Single Product -->
+              <div class="single-product">
+                  <div class="product-image">
+                      <a (click)="abrirviewcart(producto)">
+                        <img [src]="producto.imagen" alt="#" >
+                      </a>
+                        <div class="button">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#shopModal" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                        </div>
+                  </div>
+                  <div class="product-info">
+                      <h4 class="title">
+                          <a href="product-grids.html">{{producto.nombre}}</a>
+                      </h4>
+
+                      <div class="price">
+                          <span>S/{{producto.precio}}</span>
+                      </div>
+                  </div>
+              </div>
+              <!-- End Single Product -->
+          </div>
+      </div>
   </div>
-</div>
+</section>
+
+<div class="modal fade" id="shopModal" tabindex="-1" aria-labelledby="shopModalLabel" aria-hidden="true" style="font-size: 10px;font: none;top: 25%;">
+	<div class="modal-dialog" style="font-size: 10px;font: none;">
+			<div class="modal-body">
+        <figure class="pizza" *ngIf="selectedProduct">
+          <div class="pizza__herro">
+            <img [src]="selectedProduct.imagen" alt="pizza" class="pizza__img">
+          </div>
+          <div class="pizza__content">
+            <div class="pizza__title">
+              <h1 class="pizza__heading">{{ selectedProduct.nombre }}</h1>
+              <!--<div class="pizza__tag pizza__tag--1">#vegetarian</div>
+              <div class="pizza__tag pizza__tag--2">#italian</div>-->
+            </div>
+            <p class="pizza__description">{{selectedProduct.descripcion}}</p>
+          </div>
+          <div class="pizza__price">S/{{selectedProduct.precio}}</div>
+        </figure>
+
+        </div>
+
+
+			</div>
+		</div>

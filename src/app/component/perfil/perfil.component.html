@@ -1,0 +1,86 @@
+<div style="height: 30vh;"></div>
+<div class="container ">
+  <div class="row">
+      <div class="col-lg-4 pb-5">
+
+          <div class="author-card pb-3">
+
+              <div class="author-card-profile">
+                  <div class="author-card-avatar"><img id="logo" src="assets/images/logosisoft.png" alt="Logo">
+                  </div>
+                  <div class="author-card-details">
+                      <h5 class="author-card-name text-lg">{{userEmail}}</h5>
+                  </div>
+              </div>
+          </div>
+          <div class="wizard">
+              <nav class="list-group list-group-flush">
+                  <a class="list-group-item">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div><i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                              <div class="d-inline-block font-weight-medium text-uppercase">perfil</div>
+                          </div>
+                      </div>
+                  </a><a class="list-group-item " ><s>editar perfil</s></a>
+                  <a class="list-group-item" >
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div><i class="fe-icon-heart mr-1 text-muted"></i>
+                              <div class="d-inline-block font-weight-medium text-uppercase"><s>compras</s></div>
+                          </div>
+                      </div>
+                  </a>
+                  <a class="list-group-item"  >
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div><i class="fe-icon-tag mr-1 text-muted"></i>
+                              <div class="d-inline-block font-weight-medium text-uppercase"><s>Favoritos</s></div>
+                          </div>
+                      </div>
+                  </a>
+                  <a class="list-group-item"  >
+                    <div class="d-flex justify-content-between align-items-center" >
+                        <div><i class="fe-icon-tag mr-1 text-muted"></i>
+                            <div class="d-inline-block font-weight-medium text-uppercase" *ngIf="userAddedItem"><a (click)="abririnsert($event)" >Administrar</a></div>
+                        </div>
+                    </div>
+                </a>
+              </nav>
+          </div>
+      </div>
+
+      <div class="col-lg-8 pb-5">
+          <form class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="account-fn">Nombre</label>
+                      <span>{{userNombre}}</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="account-ln">Apellido</label>
+                      <span>{{userApellido}}</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="account-email">Correo : </label>
+                      <span>{{userEmail}}</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="account-phone">Telefono</label>
+                      <span>{{userCorreo}}</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="account-pass">Contraseña</label>
+                      <span (click)="togglePasswordVisibility()">{{userConstrasena}}</span>
+                  </div>
+              </div>
+
+          </form>
+      </div>
+  </div>
+</div>
