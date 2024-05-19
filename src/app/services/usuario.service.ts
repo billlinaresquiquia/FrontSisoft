@@ -17,7 +17,6 @@ export class UsuarioService {
     return this.usuarioLogueado;
   }
 
-
   // Método para iniciar sesión
   loginUser(loginData: { correo: string, contrasena: string }): Observable<string> {
     return this.http.post<string>(`${this.baseURL}/Login`, loginData)
@@ -34,12 +33,26 @@ export class UsuarioService {
       );
   }
 
+  // Método para obtener todos los usuarios
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseURL)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  // Método para eliminar un usuario
+  deleteUser(dni: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseURL}/${dni}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('Ocurrió un error:', error.error.message);
     } else if (error.status === 200) {
-      // Si el código de estado es 200, verifica si la respuesta es un objeto
       console.error('Respuesta del servidor:', error.error);
     } else {
       console.error(
@@ -48,5 +61,4 @@ export class UsuarioService {
     }
     return throwError('Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.');
   }
-
 }

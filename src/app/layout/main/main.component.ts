@@ -1,18 +1,18 @@
-import { Component,ElementRef,Input} from '@angular/core';
-import { Product } from 'src/app/Interfaces/product'
+import { Component,ElementRef,Input,AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewProductoComponent } from 'src/app/modal/view-producto/view-producto.component';
 import { ProductoService } from 'src/app/services/producto.service';
-import 'owl.carousel';
+import { Product } from 'src/app/Interfaces/product';
 
 
-declare var mifuncion: any;
+
+declare var $: any; 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent {
+export class MainComponent implements AfterViewInit{
 
 
   productos: Product[] = [];
@@ -32,35 +32,34 @@ export class MainComponent {
 
     ) { this.productosEnCarrito = this.productService.obtenerProductosEnCarrito();}
 
+    ngAfterViewInit() {
+      $('#carouselExampleSlidesOnly').carousel({
+        interval: 2000 // Ajusta el tiempo de intervalo entre slides (en milisegundos)
+      });
+    }
 
+    ngOnInit(): void {
+      this.getAllProducts();
+    }
+  
+    getAllProducts() {
+      this.productService.getAllProducts().subscribe(
+        (data: Product[]) => {
+          this.productos = data;
+          console.log('Productos obtenidos con éxito', data);
+        },
+        (error) => {
+          console.error('Error fetching products', error);
+        }
+      );
+    }
 
-  ngOnInit(): void {
-    $('.owl-carousel').owlCarousel({
-      loop:false,
-      margin:10,
-      responsiveClass:true,
-          dots: false,
-          lazyLoad : true,
-      responsive:{
-          0:{
-              items:2,
-              nav:false,
-                          dots:true
-          },
-          600:{
-              items:3,
-              nav:false
-          },
-                  900:{
-              items:4,
-              nav:false
-          },
-          1200:{
-              items:5,
-              nav:false,
-          },
-      }
-  })
+    
+ abrirview(){
+  this.router.navigate(['/home/view']);
+
+}
+  /*ngOnInit(): void {
 
     this.getProducts();
     this.getProductosPorCategoria(1);
@@ -174,7 +173,7 @@ export class MainComponent {
 
   }
 
-
+*/
 
 
 }

@@ -2,7 +2,7 @@
 
 
 
-<!-- Start Trending Product Area -->
+<!--
 <section class="trending-product section" >
   <div class="container">
       <div class="row">
@@ -14,7 +14,7 @@
       </div>
       <div class="row">
           <div class="col-lg-3 col-md-6 col-12" *ngFor="let producto of productosPorCategoria" (click)="seleccionarProducto(producto)" >
-              <!-- Start Single Product -->
+            
               <div class="single-product">
                   <div class="product-image">
                       <a (click)="abrirviewcart(producto)">
@@ -34,7 +34,7 @@
                       </div>
                   </div>
               </div>
-              <!-- End Single Product -->
+            
           </div>
       </div>
   </div>
@@ -50,8 +50,8 @@
           <div class="pizza__content">
             <div class="pizza__title">
               <h1 class="pizza__heading">{{ selectedProduct.nombre }}</h1>
-              <!--<div class="pizza__tag pizza__tag--1">#vegetarian</div>
-              <div class="pizza__tag pizza__tag--2">#italian</div>-->
+              <div class="pizza__tag pizza__tag--1">#vegetarian</div>
+              <div class="pizza__tag pizza__tag--2">#italian</div>
             </div>
             <p class="pizza__description">{{selectedProduct.descripcion}}</p>
           </div>
@@ -63,3 +63,4 @@
 
 			</div>
 		</div>
+  -->

@@ -1,0 +1,9 @@
+{
+    "/multikart": {
+      "target": "https://themes.pixelstrap.com",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  

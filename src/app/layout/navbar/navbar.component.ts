@@ -52,7 +52,7 @@ registroFallido = false;
     this.productosEnCarrito = this.productoservice.obtenerProductosEnCarrito();
   }
 
-
+/*
   togglePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
@@ -144,7 +144,7 @@ registroFallido = false;
     event.preventDefault();
     this.router.navigate(['/home', 'buy-producto']);
   }*/
-
+/*
   abririnsert(event: Event) {
     event.preventDefault();
     this.router.navigate(['/home', 'insert-product']);
@@ -189,7 +189,7 @@ eliminarProducto(producto: Product) {
     // Puedes emitir un evento para notificar a otros componentes sobre el cambio en el carrito
     // this.carritoActualizado.emit(this.productosEnCarrito);
   }
-}
+}*/
 
 
 

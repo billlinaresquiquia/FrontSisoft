@@ -14,10 +14,6 @@ import { SplitterModule } from 'primeng/splitter';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { PcComponent } from './component/pc/pc.component';
-import { LaptopComponent } from './component/laptop/laptop.component';
-import { MonitoresComponent } from './component/monitores/monitores.component';
-import { ImpresorasComponent } from './component/impresoras/impresoras.component';
-import { CamarasSeguridadComponent } from './component/camaras-seguridad/camaras-seguridad.component';
 
 import { InsertProductoComponent } from './modal/insert-producto/insert-producto.component';
 
@@ -33,7 +29,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 //ZOMM
 import { NgxImageZoomModule } from 'ngx-image-zoom';
-import { ContactComponent } from './component/contact/contact.component';
+
 import { BuyProductoComponent } from './modal/buy-producto/buy-producto.component';
 
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -45,9 +41,18 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { AgGridModule } from 'ag-grid-angular';
 import { PerfilComponent } from './component/perfil/perfil.component';
-import { AccesoriosComponent } from './component/accesorios/accesorios.component';
 
-
+import { UsuarioComponent } from './component/usuario/usuario.component';
+import { LoginComponent } from './component/usuario/login/login.component';
+import { RegisterComponent } from './component/usuario/register/register.component';
+import { PagesComponent } from './component/pages/pages.component';
+import { ContactoComponent } from './component/pages/contacto/contacto.component';
+import { CheckoutComponent } from './component/pages/checkout/checkout.component';
+import { NotfundComponent } from './component/pages/notfund/notfund.component';
+import { TabViewModule } from 'primeng/tabview';
+import { CollectionComponent } from './component/pages/collection/collection.component';
+import { ViewComponent } from './component/pages/view/view.component';
+import { GalleriaModule } from 'primeng/galleria';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,16 +60,21 @@ import { AccesoriosComponent } from './component/accesorios/accesorios.component
     MainComponent,
     NavbarComponent,
     PcComponent,
-    LaptopComponent,
-    MonitoresComponent,
-    ImpresorasComponent,
-    CamarasSeguridadComponent,
     InsertProductoComponent,
     ViewProductoComponent,
-    ContactComponent,
+
     BuyProductoComponent,
     PerfilComponent,
-    AccesoriosComponent,
+
+    UsuarioComponent,
+    LoginComponent,
+    RegisterComponent,
+    PagesComponent,
+    ContactoComponent,
+    CheckoutComponent,
+    NotfundComponent,
+    CollectionComponent,
+    ViewComponent,
 
 
 
@@ -88,7 +98,9 @@ import { AccesoriosComponent } from './component/accesorios/accesorios.component
     NgxDropzoneModule,
     ImageModule,
     NgbModalModule,
-    AgGridModule
+    AgGridModule,
+    TabViewModule,
+    GalleriaModule
 
 
 

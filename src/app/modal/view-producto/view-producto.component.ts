@@ -34,7 +34,7 @@ ngOnInit(): void {
   this.getProducts();
 }
 getProducts() {
-  this.productService.getProducts().subscribe(
+  this.productService.getAllProducts().subscribe(
     (data: Product[]) => {
       this.productos = data;
       console.log('Productos obtenidos con éxito', data);
@@ -45,7 +45,7 @@ getProducts() {
     }
   );
 }
-
+/*
 seleccionarProducto(producto: Product) {
   this.selectedProduct = producto;
   this.agregarAlCarrito(producto)
@@ -65,6 +65,6 @@ seleccionarProducto(producto: Product) {
   abrirmain(event: Event) {
     event.preventDefault();
     this.router.navigate(['/home']);
-  }
+  }*/
 
 }

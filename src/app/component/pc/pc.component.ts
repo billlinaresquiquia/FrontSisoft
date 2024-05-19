@@ -10,7 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./pc.component.css']
 })
 export class PcComponent {
-  productosPorCategoria: Product[] = [];
+  /*productosPorCategoria: Product[] = [];
   selectedProduct: Product | null = null; // Inicialmente, no hay ningún producto seleccionado
   productosEnCarrito: any[];
 
@@ -68,5 +68,5 @@ export class PcComponent {
   abrirviewcart(producto: any){
     this.router.navigate(['/home/view-producto'], { queryParams: { producto: JSON.stringify(producto) } });
 
-  }
+  }*/
 }

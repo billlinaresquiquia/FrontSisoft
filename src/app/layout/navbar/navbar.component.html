@@ -1,906 +1,587 @@
-<!--<header class="header navbar-area" style="background-color: #081828;position: fixed;">
-
-
-  <div class="header-middle">
-      <div class="container">
-          <div class="row align-items-center" style="display: flex;justify-content: flex-start;">
-              <div class="col-lg-3 col-md-3 col-7">
-
-                  <a class="navbar-brand" href="index.html">
-                      <img id="logo" src="assets/images/logosisoft.png" alt="Logo">
-                  </a>
-
-              </div>
-              <div class="col-lg-5 col-md-7 d-xs-none">
-
-                  <div class="main-menu-search">
-
-                      <div class="navbar-search search-style-5">
-                          <div class="search-input">
-                              <input type="text" placeholder="Search">
-                          </div>
-                          <div class="search-btn">
-                              <button style="border:1px solid blue !important;"><i class="lni lni-search-alt" style="color: black !important;"></i></button>
-                          </div>
-                      </div>
-
-                  </div>
-
-              </div>
-              <div class="col-lg-4 col-md-2 col-5">
-                  <div class="middle-right-area">
-                        <a data-bs-toggle="modal" data-bs-target="#exampleModall" style="color: white;">
-                            inisiar
-                        </a>
-                        <h1 style="color: white;">/</h1>
-                        <a data-bs-toggle="modal" data-bs-target="#exampleModalll" style="color: white;" >
-                            registrar
-                        </a>
-                        <h1>.</h1>
-                        <h1>.</h1>
-                      <div class="navbar-cart" style="display: flex;justify-content: center;align-items: center;color: white;">
-                            <div class="wishlist">
-                                <a (click)="abrirperfil($event)">
-                                    <div class="user">
-                                      <i class="lni lni-user"></i>
-
-                                    </div>
-                                  </a>
-                            </div>
-                            <h6 style="color: white;">{{this.userEmail}}</h6>
-
-                          <div class="wishlist">
-                              <a (click)="abrirpc($event)">
-                                  <i class="lni lni-heart"></i>
-                                  <span class="total-items">0</span>
-                              </a>
-                          </div>
-                          <div class="cart-items">
-                              <a  class="main-btn">
-                                  <i class="lni lni-cart"></i>
-                                  <span class="total-items">{{ productosEnCarrito.length }}</span>
-                              </a>
-
-                              <div class="shopping-item">
-                                  <div class="dropdown-cart-header">
-                                      <span>Lista de Productos</span>
-
-                                  </div>
-                                  <ul class="shopping-list">
-                                      <li *ngFor="let producto of productosEnCarrito">
-                                          <a (click)="eliminarProducto(producto)" class="remove" title="Remove this item"><i
-                                                  class="lni lni-close"></i></a>
-                                          <div class="cart-img-head">
-                                              <a class="cart-img" ><img [src]="producto.imagen"
-                                                       alt="#"></a>
-                                          </div>
-
-                                          <div class="content" >
-                                              <h4><a >
-                                                {{producto.nombre}}</a></h4>
-                                              <input type="number" [(ngModel)]="producto.cantidad" (input)="calcularTotal()" class="quantity"><span class="amount">S/{{producto.precio * producto.cantidad}}</span>
-                                          </div>
-                                      </li>
-                                  </ul>
-                                  <div class="bottom">
-                                      <div class="total">
-                                          <span>Total</span>
-                                          <span class="total-amount">S/{{calcularTotal()}}</span>
-                                      </div>
-                                      <div class="button">
-                                          <a  (click)="abrirbuyproducto($event)" class="btn animate">Checkout</a>
-                                      </div>
-                                  </div>
-                              </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <div class="container" style="background-color: white;" >
-      <div class="row align-items-center">
-          <div class="col-lg-8 col-md-6 col-12">
-              <div class="nav-inner">
-
-                  <div class="mega-category-menu" style="gap: 4%;">
-                    <i class="lni lni-menu"></i><span class="cat-button">Categorias</span>
-                      <ul class="sub-category">
-                          <li><a (click)="abriraccesorio($event)">accessorios <i class="lni lni-chevron-right"></i></a>
-                              <ul class="inner-sub-category d-flex">
-                                  <div>
-                                    <li><a >memoria ram</a></li>
-                                  <li><a >tintas </a></li>
-                                  <li><a >disco duro</a></li>
-                                  <li><a >disco solido</a></li>
-                                  <li><a >usb</a></li>
-                                  <li><a >cables</a></li>
-                                  <li><a >teclados</a></li>
-                                  <li><a >mouse</a></li>
-                                  <li><a >parlante</a></li>
-                                  </div>
-                                  <img src="https://img.freepik.com/vector-premium/componentes-hardware-pc-simbolos-items-computadora-procesador-servidor-ssd-o-hdd-memoria-ram-iconos-linea_80590-5893.jpg" alt="" style="width: 60%;height: 250px;">
-                              </ul>
-                          </li>
-                          <li><a (click)="abrirpc($event)">pc</a></li>
-                          <li><a (click)="abrirmonitores($event)">monitores</a></li>
-                          <li><a (click)="abrirlaptop($event)">laptop</a></li>
-                          <li><a (click)="abririmpresora($event)">impresoras</a></li>
-                          <li><a >camaras de seguridad</a></li>
-                      </ul>
-                  </div>
-
-                  <nav class="navbar navbar-expand-lg">
-                      <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                          aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="toggler-icon"></span>
-                          <span class="toggler-icon"></span>
-                          <span class="toggler-icon"></span>
-                      </button>
-                      <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                          <ul id="nav" class="navbar-nav ms-auto">
-                              <li class="nav-item">
-                                  <a href="#" class="active" aria-label="Toggle navigation">Inicio</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="dd-menu collapsed" (click)="abrirpc($event)" data-bs-toggle="collapse"
-                                      data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent"
-                                      aria-expanded="false" aria-label="Toggle navigation">PC</a>
-                                  <ul class="sub-menu collapse" id="submenu-1-2">
-                                      <li class="nav-item"><a >Azus</a></li>
-                                      <li class="nav-item"><a>Teros</a></li>
-                                      <li class="nav-item"><a >Acer</a></li>
-                                      <li class="nav-item"><a >Hp</a></li>
-                                      <li class="nav-item"><a >Msi</a></li>
-                                  </ul>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="dd-menu collapsed" (click)="abrirlaptop($event)" data-bs-toggle="collapse"
-                                      data-bs-target="#submenu-1-3" aria-controls="navbarSupportedContent"
-                                      aria-expanded="false" aria-label="Toggle navigation">Laptop</a>
-                                  <ul class="sub-menu collapse" id="submenu-1-3">
-                                      <li class="nav-item"><a >Lenovo</a></li>
-                                      <li class="nav-item"><a >HP</a></li>
-                                      <li class="nav-item"><a >Acer</a></li>
-                                  </ul>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="dd-menu collapsed" (click)="abrirmonitores($event)" data-bs-toggle="collapse"
-                                      data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                      aria-expanded="false" aria-label="Toggle navigation">Monitores</a>
-                                  <ul class="sub-menu collapse" id="submenu-1-4">
-                                      <li class="nav-item"><a >LG</a>
-                                      </li>
-                                      <li class="nav-item"><a >Samsung</a></li>
-                                      <li class="nav-item"><a >Acer</a></li>
-                                      <li class="nav-item"><a >Dell</a></li>
-                                      <li class="nav-item"><a >Asus</a></li>
-                                  </ul>
-                              </li>
-                              <li class="nav-item">
-                                <a class="dd-menu collapsed" (click)="abririmpresora($event)" data-bs-toggle="collapse"
-                                    data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">Impresoras</a>
-                                <ul class="sub-menu collapse" id="submenu-1-4">
-                                    <li class="nav-item"><a >HP</a>
-                                    </li>
-                                    <li class="nav-item"><a >Canon</a></li>
-                                    <li class="nav-item"><a >Epson</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                              <a class="dd-menu collapsed" (click)="abrircamaras($event)" data-bs-toggle="collapse"
-                                  data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                  aria-expanded="false" aria-label="Toggle navigation">Camaras</a>
-                              <ul class="sub-menu collapse" id="submenu-1-4">
-                                  <li class="nav-item"><a >Dahua</a>
-                                  </li>
-                                  <li class="nav-item"><a >Samsung</a></li>
-                              </ul>
-                          </li>
-                          <li class="nav-item">
-                            <a class="dd-menu collapsed" (click)="abriraccesorio($event)"  data-bs-toggle="collapse"
-                                data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">Otros</a>
-                            <ul class="sub-menu collapse" id="submenu-1-4">
-                                <li class="nav-item"><a >Memorias ram</a>
-                                </li>
-                                <li class="nav-item"><a >Disco duro</a></li>
-                                <li class="nav-item"><a >Tintas impresoras</a></li>
-                                <li class="nav-item"><a >Placa Madre</a></li>
-                                <li class="nav-item"><a >Procesador</a></li>
-                                <li class="nav-item"><a >Fuentes</a></li>
-                                <li class="nav-item"><a >Cables</a></li>
-                                <li class="nav-item"><a >Teclados</a></li>
-                                <li class="nav-item"><a >Mouse</a></li>
-                                <li class="nav-item"><a >entre otros ...</a></li>
-                            </ul>
-                        </li>
-                              <li class="nav-item">
-                                  <a (click)="abrircontacto($event) " aria-label="Toggle navigation">Contactanos</a>
-                              </li>
-                          </ul>
-                      </div>
-                  </nav>
-
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-
-              <div class="nav-social" style="gap: 10px;">
-                <a >
-                    <i class="lni lni-phone" style="color: black;"></i>
-                   </a>
-                  <h3 style="font-size: 0.8rem;">Llamar:
-                      <span>956 167 490</span>
-                  </h3>
-                  <h5 class="title">Siguenos en:</h5>
-                  <ul>
-                      <li>
-                          <a href="https://www.facebook.com/sisoftica" target="_blank"><i class="lni lni-facebook-filled" style="color: black;"></i></a>
-                      </li>
-
-                  </ul>
-              </div>
-
-          </div>
-      </div>
-  </div>
-
-</header>-->
-
-<!--
-<div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModallLabel" aria-hidden="true" >
-    <div class="modal-dialog" >
-      <div class="modal-content " >
-        <div class="login-page ">
-            <div class="container">
-              <div class="form-box">
-                <div class="form-tab">
-                  <ul class="nav nav-pills nav-fill" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModalll">Registrar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active"  data-bs-toggle="modal" data-bs-target="#exampleModall">Login</a>
-                </li>
-            </ul>
-
-            <form (submit)="login()">
-                <div class="form-group">
-
-                  <input type="text" class="form-control" name="singin-email" [(ngModel)]="correo" required placeholder="correo">
-                </div>
-
-                <div class="form-group">
-                  <input type="password" class="form-control" name="singin-password" [(ngModel)]="contrasena" required placeholder="contraseña">
-                </div>
-
-                <div class="form-footer">
-                  <button type="submit" class="btn btn-outline-primary-2">
-                          <span>Inisiar Sesion</span>
-
-                        </button>
-
-                </div>
-              </form>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
-      </div>
-    </div>-->
-
-
-
-
-
-
-
-
-
-
-   <!--- <div class="modal fade" id="exampleModalll" tabindex="-1" aria-labelledby="exampleModalllLabel" aria-hidden="true" >
-        <div class="modal-dialog" >
-          <div class="modal-content " >
-            <div class="login-page  " >
-                <div class="container">
-                  <div class="form-box">
-                    <div class="form-tab">
-                      <ul class="nav nav-pills nav-fill" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModall" >Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModalll" >Registrar</a>
-                    </li>
-                </ul>
-
-                <form (submit)="registro()">
-                    <div class="form-group">
-                        <input type="text" class="form-control"  name="nombre" [(ngModel)]="userNombre" required placeholder="nombre">
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class="form-control"  name="apellido" [(ngModel)]="userApellido" required placeholder="apellido">
-                      </div>
-
-                    <div class="form-group">
-                      <input type="email" class="form-control" id="register-email-2" name="register-email" required placeholder="correo" [(ngModel)]="userCorreo" required>
-                    </div>
-
-                    <div class="form-group">
-                      <input type="password" class="form-control" id="register-password-2" name="register-password" required placeholder="contraseña" [(ngModel)]="userConstrasena" required>
-                    </div>
-
-                    <div class="form-footer">
-                      <button type="submit" class="btn btn-outline-primary-2">
-                              <span>Registrarse</span>
-                            </button>
-                    </div>
-                  </form>
-                  </div>
-                </div>
-              </div
-
-
-            </div>
-          </div>
-          </div>
-        </div>
-
-
-        <div class="phone-call cbh-phone cbh-green cbh-show  cbh-static" id="clbh_phone_div">
-            <a id="WhatsApp-button"
-               href="https://wa.me/51956167490?text=Hola%20me%20gustaria%20saber%20el%20precio%20del%20producto"
-                target="_blank" class="phoneJs" title="WhatsApp EOS">
-                <div class="cbh-ph-circle"></div>
-                <div class="cbh-ph-circle-fill"></div>
-                <div class="cbh-ph-img-circle1"></div>
-            </a>
-          </div>-->
-
-
-
-
-
-
-<!---
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-	<div class="modal-dialog" >
-		<div class="modal-content "  >
-        <link rel="stylesheet" href="//unpkg.com/xp.css">
-
-        <article class="windows_xp">
-          <section>
-              <div class="window window__hello" >
-                  <div class="title-bar">
-                      <div class="title-bar-text">
-                          Inisiar Sesion
-                      </div>
-
-                      <div class="title-bar-controls">
-                          <button aria-label="Minimize"></button>
-                          <button aria-label="Maximize"></button>
-                          <button aria-label="Close"></button>
-                      </div>
-                  </div>
-                  <div class="window-body d-flex" >
-                    <div>
-                      <img src="assets/images/logosisoft.png" alt="" style="width: 70%;">
-                    </div>
-                    <form (submit)="login()">
-                      <div style="display: flex; flex-direction: column;justify-content: center;gap: 3%;font-size: 2.1vh;" >
-                          <div><span>correo:  </span><input type="email" placeholder="email" id="singin-email" name="singin-email" [(ngModel)]="correo" required></div>
-                          <div><span>contraseña: </span><input type="password" id="singin-password" name="singin-password" [(ngModel)]="contrasena" required></div>
-                          <button type="submit" style="width: 80%;">inisiar</button>
-                      </div>
-                    </form>
-                      <section class="field-row" style="justify-content: flex-end">
-                          <button>OK</button>
-                      </section>
-                  </div>
-              </div>
-          </section>
-
-      </article>
-
-
-
-			</div>
-		</div>
-		</div>-->
-
-
-
-
-
-
-
-
-<!--
-    <div class="modal fade" id="registropleModal" tabindex="-1" aria-labelledby="registropleModal" aria-hidden="true" >
-      <div class="modal-dialog" >
-        <div class="modal-content "  >
-            <link rel="stylesheet" href="//unpkg.com/xp.css">
-
-            <article class="windows_xp">
-              <section>
-                  <div class="window window__hello" >
-                      <div class="title-bar">
-                          <div class="title-bar-text">
-                              Registrar
-                          </div>
-
-                          <div class="title-bar-controls">
-                              <button aria-label="Minimize"></button>
-                              <button aria-label="Maximize"></button>
-                              <button aria-label="Close"></button>
-                          </div>
-                      </div>
-                      <div class="window-body d-flex" >
-                        <div>
-                          <img src="assets/images/logosisoft.png" alt="" style="width: 70%;">
-                        </div>
-                        <form (submit)="registro()" >
-                          <div style="display: flex; flex-direction: column;justify-content: center;gap: 3%;font-size: 2.1vh;" >
-                            <div>
-                              <span>Nombre: </span><input type="text" name="nombre" [(ngModel)]="userNombre" required>
-                            </div>
-                            <div>
-                              <span>Apellido: </span><input type="text" name="apellido" [(ngModel)]="userApellido" required>
-                            </div>
-                            <div>
-                              <span>Correo: </span><input type="email" placeholder="email" id="singin-email" name="singin-email" [(ngModel)]="userCorreo" required>
-                            </div>
-                            <div>
-                              <span>Contraseña: </span><input type="password" id="singin-password" name="singin-password" [(ngModel)]="userConstrasena" required>
-                            </div>
-
-                              <button type="submit" style="width: 80%;" >Registrar</button>
-                          </div>
-                        </form>
-
-                      </div>
-                  </div>
-              </section>
-
-          </article>
-
-
-
-          </div>
-        </div>
-        </div>
-
-
-        <div class="phone-call cbh-phone cbh-green cbh-show  cbh-static" id="clbh_phone_div">
-          <a id="WhatsApp-button"
-             href="https://wa.me/51956167490?text=Hola%20me%20gustaria%20saber%20el%20precio%20del"
-              target="_blank" class="phoneJs" title="WhatsApp EOS">
-              <div class="cbh-ph-circle"></div>
-              <div class="cbh-ph-circle-fill"></div>
-              <div class="cbh-ph-img-circle1"></div>
-          </a>
-        </div>-->
-
-
-
-
-      <!--<div class="modal fade" id="alertaregistroModal" tabindex="-1" aria-labelledby="alertaregistroModal" aria-hidden="true"  *ngIf="registroExitoso">
-          <div class="modal-dialog" >
-
-              <div class="mainbox" *ngIf="mostrarHtml">
-                <div class="blue-container">
-                  <span class="windows">Sisoft:</span>
-                  <button class="times">X</button>
-                </div>
-                <div class="middle-container">
-                  <img class="pic" src="assets/images/check.png">
-                <p class="message">Usuario Registrado exitosamente</p>
-
-                </div>
-                <div class="ok-container">
-                  <div class="ok">OK</div>
-              </div>
-              </div>
-
-            </div>
-            </div>
-
-
-
-            <div class="modal fade" id="falloalertaregistroModal" tabindex="-1" aria-labelledby="alertaregistroModal" aria-hidden="true"  *ngIf="registroFallido">
-              <div class="modal-dialog" >
-
-                  <div class="mainbox" *ngIf="mostrarHtml">
-                    <div class="blue-container">
-                      <span class="windows">Sisoft:</span>
-                      <button class="times">X</button>
-                    </div>
-                    <div class="middle-container">
-                      <img class="pic" src="https://www.freeiconspng.com/uploads/red-error-round-icon-2.png">
-                    <p class="message">error</p>
-
-                    </div>
-                    <div class="ok-container">
-                      <div class="ok">OK</div>
-                  </div>
-                  </div>
-
-                </div>
-                </div>-->
-                <div class="body-wrapper">
-                  <!-- Begin Header Area -->
-                  <header class="li-header-4">
-                      <!-- Begin Header Top Area -->
-                      <div class="header-top">
-                          <div class="container">
-                              <div class="row">
-                                  <!-- Begin Header Top Left Area -->
-                                  <div class="col-lg-3 col-md-4">
-                                      <div class="header-top-left">
-                                          <ul class="phone-wrap">
-                                              <li><span>Consulta Telefónica: </span><a href="#">(+51) 956 167 490</a></li>
-                                          </ul>
-                                      </div>
-                                  </div>
-                                  <!-- Header Top Left Area End Here -->
-                                  <!-- Begin Header Top Right Area -->
-                                  <div class="col-lg-9 col-md-8">
-                                      <div class="header-top-right">
-                                          <ul class="ht-menu">
-                                              <!-- Begin Setting Area -->
-                                              <li>
-                                                  <div class="ht-setting-trigger"><span>Configuración</span></div>
-                                                  <div class="setting ht-setting">
-                                                      <ul class="ht-setting-list">
-                                                          <li><a href="login-register.html">Mi Cuenta</a></li>
-                                                          <li><a href="checkout.html">Verificar</a></li>
-                                                          <li><a href="login-register.html">Inisiar Sesion</a></li>
-                                                      </ul>
-                                                  </div>
-                                              </li>
-                                              <!-- Setting Area End Here -->
-                                              <!-- Begin Currency Area -->
-                                              <li>
-                                                  <span class="currency-selector-wrapper">Divisa :</span>
-                                                  <div class="ht-currency-trigger"><span>Pen $</span></div>
-
-                                              </li>
-                                              <!-- Currency Area End Here -->
-                                              <!-- Begin Language Area -->
-                                              <li>
-                                                  <span class="language-selector-wrapper">Idioma :</span>
-                                                  <div class="ht-language-trigger"><span>Español</span></div>
-                                                  <div class="language ht-language">
-                                                      <ul class="ht-setting-list">
-                                                          <li class="active"><a href="#"><img src="assets/images/menu/flag-icon/1.jpg" alt="">English</a></li>
-                                                          <li><a href="#"><img src="assets/images/menu/flag-icon/2.jpg" alt="">Français</a></li>
-                                                      </ul>
-                                                  </div>
-                                              </li>
-                                              <!-- Language Area End Here -->
-                                          </ul>
-                                      </div>
-                                  </div>
-                                  <!-- Header Top Right Area End Here -->
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Header Top Area End Here -->
-                      <!-- Begin Header Middle Area -->
-                      <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
-                          <div class="container">
-                              <div class="row">
-                                  <!-- Begin Header Logo Area -->
-                                  <div class="col-lg-3">
-                                      <div class="logo pb-sm-30 pb-xs-30">
-                                          <a href="index.html">
-                                              <img src="/images/menu/logo/2.jpg" alt="logo">
-                                          </a>
-                                      </div>
-                                  </div>
-                                  <!-- Header Logo Area End Here -->
-                                  <!-- Begin Header Middle Right Area -->
-                                  <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
-                                      <!-- Begin Header Middle Searchbox Area -->
-                                      <form action="#" class="hm-searchbox">
-                                          <select class="nice-select select-search-category">
-                                              <option value="0">Todo</option>
-                                              <option value="10">Laptops</option>
-                                              <option value="17">- -  Prime Video</option>
-                                              <option value="20">- - - -  All Videos</option>
-                                              <option value="21">- - - -  Blouses</option>
-                                              <option value="22">- - - -  Evening Dresses</option>
-                                              <option value="23">- - - -  Summer Dresses</option>
-                                              <option value="24">- - - -  T-shirts</option>
-                                              <option value="25">- - - -  Rent or Buy</option>
-                                              <option value="26">- - - -  Your Watchlist</option>
-                                              <option value="27">- - - -  Watch Anywhere</option>
-                                              <option value="28">- - - -  Getting Started</option>
-                                              <option value="18">- - - -  Computers</option>
-                                              <option value="29">- - - -  More to Explore</option>
-                                              <option value="30">- - - -  TV &amp; Video</option>
-                                              <option value="31">- - - -  Audio &amp; Theater</option>
-                                              <option value="32">- - - -  Camera, Photo </option>
-                                              <option value="33">- - - -  Cell Phones</option>
-                                              <option value="34">- - - -  Headphones</option>
-                                              <option value="35">- - - -  Video Games</option>
-                                              <option value="36">- - - -  Wireless Speakers</option>
-                                              <option value="19">- - - -  Electronics</option>
-                                              <option value="37">- - - -  Amazon Home</option>
-                                              <option value="38">- - - -  Kitchen &amp; Dining</option>
-                                              <option value="39">- - - -  Furniture</option>
-                                              <option value="40">- - - -  Bed &amp; Bath</option>
-                                              <option value="41">- - - -  Appliances</option>
-                                              <option value="11">TV &amp; Audio</option>
-                                              <option value="42">- -  Chamcham</option>
-                                              <option value="45">- - - -  Office</option>
-                                              <option value="47">- - - -  Gaming</option>
-                                              <option value="48">- - - -  Chromebook</option>
-                                              <option value="49">- - - -  Refurbished</option>
-                                              <option value="50">- - - -  Touchscreen</option>
-                                              <option value="51">- - - -  Ultrabooks</option>
-                                              <option value="52">- - - -  Blouses</option>
-                                              <option value="43">- -  Meito</option>
-                                              <option value="53">- - - -  Hard Drives</option>
-                                              <option value="54">- - - -  Graphic Cards</option>
-                                              <option value="55">- - - -  Processors (CPU)</option>
-                                              <option value="56">- - - -  Memory</option>
-                                              <option value="57">- - - -  Motherboards</option>
-                                              <option value="58">- - - -  Fans &amp; Cooling</option>
-                                              <option value="59">- - - -  CD/DVD Drives</option>
-                                              <option value="44">- -  XailStation</option>
-                                              <option value="60">- - - -  Sound Cards</option>
-                                              <option value="61">- - - -  Cases &amp; Towers</option>
-                                              <option value="62">- - - -  Casual Dresses</option>
-                                              <option value="63">- - - -  Evening Dresses</option>
-                                              <option value="64">- - - -  T-shirts</option>
-                                              <option value="65">- - - -  Tops</option>
-                                              <option value="12">Smartphone</option>
-                                              <option value="66">- -  Camera Accessories</option>
-                                              <option value="68">- - - -  Octa Core</option>
-                                              <option value="69">- - - -  Quad Core</option>
-                                              <option value="70">- - - -  Dual Core</option>
-                                              <option value="71">- - - -  7.0 Screen</option>
-                                              <option value="72">- - - -  9.0 Screen</option>
-                                              <option value="73">- - - -  Bags &amp; Cases</option>
-                                              <option value="67">- -  Sanai</option>
-                                              <option value="74">- - - -  Batteries</option>
-                                              <option value="75">- - - -  Microphones</option>
-                                              <option value="76">- - - -  Stabilizers</option>
-                                              <option value="77">- - - -  Video Tapes</option>
-                                              <option value="78">- - - -  Memory Card Readers</option>
-                                              <option value="79">- - - -  Tripods</option>
-                                              <option value="13">Cameras</option>
-                                              <option value="14">headphone</option>
-                                              <option value="15">Smartwatch</option>
-                                              <option value="16">Accessories</option>
-                                          </select>
-                                          <input type="text" placeholder="Introduce tu clave de busqueda ...">
-                                          <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
-                                      </form>
-                                      <!-- Header Middle Searchbox Area End Here -->
-                                      <!-- Begin Header Middle Right Area -->
-                                      <div class="header-middle-right">
-                                          <ul class="hm-menu">
-                                              <!-- Begin Header Middle Wishlist Area -->
-                                              <li class="hm-wishlist">
-                                                  <a href="wishlist.html">
-                                                      <span class="cart-item-count wishlist-item-count">0</span>
-                                                      <i class="fa fa-heart-o"></i>
-                                                  </a>
-                                              </li>
-                                              <!-- Header Middle Wishlist Area End Here -->
-                                              <!-- Begin Header Mini Cart Area -->
-                                              <li class="hm-minicart">
-                                                  <div class="hm-minicart-trigger">
-                                                      <span class="item-icon"></span>
-                                                      <span class="item-text">£80.00
-                                                          <span class="cart-item-count">2</span>
-                                                      </span>
-                                                  </div>
-                                                  <span></span>
-                                                  <div class="minicart">
-                                                      <ul class="minicart-product-list">
-                                                          <li>
-                                                              <a href="single-product.html" class="minicart-product-image">
-                                                                  <img src="assets/images/product/small-size/1.jpg" alt="cart products">
-                                                              </a>
-                                                              <div class="minicart-product-details">
-                                                                  <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                                  <span>£40 x 1</span>
-                                                              </div>
-                                                              <button class="close">
-                                                                  <i class="fa fa-close"></i>
-                                                              </button>
-                                                          </li>
-                                                          <li>
-                                                              <a href="single-product.html" class="minicart-product-image">
-                                                                  <img src="assets/images/product/small-size/2.jpg" alt="cart products">
-                                                              </a>
-                                                              <div class="minicart-product-details">
-                                                                  <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                                  <span>£40 x 1</span>
-                                                              </div>
-                                                              <button class="close">
-                                                                  <i class="fa fa-close"></i>
-                                                              </button>
-                                                          </li>
-                                                      </ul>
-                                                      <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
-                                                      <div class="minicart-button">
-                                                          <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                              <span>View Full Cart</span>
-                                                          </a>
-                                                          <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
-                                                              <span>Checkout</span>
-                                                          </a>
-                                                      </div>
-                                                  </div>
-                                              </li>
-                                              <!-- Header Mini Cart Area End Here -->
-                                          </ul>
-                                      </div>
-                                      <!-- Header Middle Right Area End Here -->
-                                  </div>
-                                  <!-- Header Middle Right Area End Here -->
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Header Middle Area End Here -->
-                      <!-- Begin Header Bottom Area -->
-                      <div class="header-bottom header-sticky stick d-none d-lg-block d-xl-block">
-                          <div class="container">
-                              <div class="row">
-                                  <div class="col-lg-12">
-                                     <!-- Begin Header Bottom Menu Area -->
-                                     <div class="hb-menu">
-                                         <nav>
-                                             <ul>
-                                                 <li class="dropdown-holder"><a href="index.html">Hogar</a>
-                                                     <ul class="hb-dropdown">
-                                                         <li><a href="index.html">Home One</a></li>
-                                                         <li><a href="index-2.html">Home Two</a></li>
-                                                         <li><a href="index-3.html">Home Three</a></li>
-                                                         <li class="active"><a href="index-4.html">Home Four</a></li>
-                                                     </ul>
-                                                 </li>
-                                                 <li class="megamenu-holder"><a href="shop-left-sidebar.html">Comercio</a>
-                                                     <ul class="megamenu hb-megamenu">
-                                                         <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
-                                                             <ul>
-                                                                 <li><a href="shop-3-column.html">Shop 3 Column</a></li>
-                                                                 <li><a (click)="abrirlaptop($event)">laptop</a></li>
-                                                                 <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                                                 <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                                 <li><a href="shop-list.html">Shop List</a></li>
-                                                                 <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
-                                                                 <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
-                                                             </ul>
-                                                         </li>
-                                                         <li><a href="single-product-gallery-left.html">Single Product Style</a>
-                                                             <ul>
-                                                                 <li><a href="single-product-carousel.html">Single Product Carousel</a></li>
-                                                                 <li><a href="single-product-gallery-left.html">Single Product Gallery Left</a></li>
-                                                                 <li><a href="single-product-gallery-right.html">Single Product Gallery Right</a></li>
-                                                                 <li><a href="single-product-tab-style-top.html">Single Product Tab Style Top</a></li>
-                                                                 <li><a href="single-product-tab-style-left.html">Single Product Tab Style Left</a></li>
-                                                                 <li><a href="single-product-tab-style-right.html">Single Product Tab Style Right</a></li>
-                                                             </ul>
-                                                         </li>
-                                                         <li><a href="single-product.html">Single Products</a>
-                                                             <ul>
-                                                                 <li><a href="single-product.html">Single Product</a></li>
-                                                                 <li><a href="single-product-sale.html">Single Product Sale</a></li>
-                                                                 <li><a href="single-product-group.html">Single Product Group</a></li>
-                                                                 <li><a href="single-product-normal.html">Single Product Normal</a></li>
-                                                                 <li><a href="single-product-affiliate.html">Single Product Affiliate</a></li>
-                                                             </ul>
-                                                         </li>
-                                                     </ul>
-                                                 </li>
-                                                 <li class="dropdown-holder"><a href="blog-left-sidebar.html">Blog</a>
-                                                     <ul class="hb-dropdown">
-                                                         <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">Blog Grid View</a>
-                                                             <ul class="hb-dropdown hb-sub-dropdown">
-                                                                 <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                                 <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                                 <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                                 <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                             </ul>
-                                                         </li>
-                                                         <li class="sub-dropdown-holder"><a href="blog-list-left-sidebar.html">Blog List View</a>
-                                                             <ul class="hb-dropdown hb-sub-dropdown">
-                                                                 <li><a href="blog-list.html">Blog List</a></li>
-                                                                 <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                                 <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                             </ul>
-                                                         </li>
-                                                         <li class="sub-dropdown-holder"><a href="blog-details-left-sidebar.html">Blog Details</a>
-                                                             <ul class="hb-dropdown hb-sub-dropdown">
-                                                                 <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                                 <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                             </ul>
-                                                         </li>
-                                                         <li class="sub-dropdown-holder"><a href="blog-gallery-format.html">Blog Format</a>
-                                                             <ul class="hb-dropdown hb-sub-dropdown">
-                                                                 <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                                 <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                                 <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                             </ul>
-                                                         </li>
-                                                     </ul>
-                                                 </li>
-                                                 <li class="megamenu-static-holder"><a href="index.html">Paginas</a>
-                                                     <ul class="megamenu hb-megamenu">
-                                                         <li><a href="blog-left-sidebar.html">Blog Layouts</a>
-                                                             <ul>
-                                                                 <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                                 <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                                 <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                                 <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                                 <li><a href="blog-list.html">Blog List</a></li>
-                                                                 <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                                 <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                             </ul>
-                                                         </li>
-                                                         <li><a href="blog-details-left-sidebar.html">Blog Details Pages</a>
-                                                             <ul>
-                                                                 <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                                 <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                                 <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                                 <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                                 <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                             </ul>
-                                                         </li>
-                                                         <li><a href="index.html">Other Pages</a>
-                                                             <ul>
-                                                                 <li><a href="login-register.html">My Account</a></li>
-                                                                 <li><a href="checkout.html">Checkout</a></li>
-                                                                 <li><a href="compare.html">Compare</a></li>
-                                                                 <li><a href="wishlist.html">Wishlist</a></li>
-                                                                 <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                                             </ul>
-                                                         </li>
-                                                         <li><a href="index.html">Other Pages 2</a>
-                                                             <ul>
-                                                                 <li><a href="contact.html">Contact</a></li>
-                                                                 <li><a href="about-us.html">About Us</a></li>
-                                                                 <li><a href="faq.html">FAQ</a></li>
-                                                                 <li><a href="404.html">404 Error</a></li>
-                                                             </ul>
-                                                         </li>
-                                                     </ul>
-                                                 </li>
-                                                 <li><a href="about-us.html">Sobe</a></li>
-                                                 <li><a href="contact.html">Contact</a></li>
-                                                 <li><a href="shop-left-sidebar.html">Smartwatch</a></li>
-                                                 <li><a href="shop-left-sidebar.html">Accessories</a></li>
-                                             </ul>
-                                         </nav>
-                                     </div>
-                                     <!-- Header Bottom Menu Area End Here -->
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Header Bottom Area End Here -->
-                      <!-- Begin Mobile Menu Area -->
-                      <div class="mobile-menu-area mobile-menu-area-4 d-lg-none d-xl-none col-12">
-                          <div class="container">
-                              <div class="row">
-                                  <div class="mobile-menu">
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Mobile Menu Area End Here -->
-                  </header>
+<header class="header-style-5 style-light">
+    <div class="mobile-fix-option"></div>
+    <div class="top-header top-header-dark2">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="header-contact">
+    <ul>
+    <li>Welcome to Our store Multikart</li>
+    <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
+    </ul>
+    </div>
+    </div>
+    <div class="col-lg-6 text-end">
+    <ul class="header-dropdown">
+    <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+    </li>
+    <li class="onhover-dropdown mobile-account"><i class="fa fa-user" aria-hidden="true"></i>
+    My Account
+    <ul class="onhover-show-div">
+    <li><a href="login.html">Login</a></li>
+    <li><a href="register.html">register</a></li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="container">
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="main-menu">
+    <div class="menu-left">
+    <div class="navbar d-block d-xl-none">
+    <a href="javascript:void(0)">
+    <div class="bar-style" id="toggle-sidebar-res"><i class="fa fa-bars sidebar-bar"
+    aria-hidden="true"></i>
+    </div>
+    </a>
+    </div>
+    <div class="brand-logo">
+    <a href="index.html"><img src="../assets/images/icon/logo/1.png"
+    class="img-fluid blur-up lazyload" alt=""></a>
+    </div>
+    </div>
+    <div>
+    <form class="form_search" role="form">
+    <input id="query search-autocomplete" type="search"
+    placeholder="Search any Device or Gadgets..." class="nav-search nav-search-field"
+    aria-expanded="true">
+    <button type="submit" name="nav-submit-button" class="btn-search">
+    <i class="ti-search"></i>
+    </button>
+    </form>
+    </div>
+    <div class="menu-right pull-right">
+    <div>
+    <div class="icon-nav">
+    <ul>
+    <li class="onhover-div mobile-search d-xl-none d-inline-block">
+    <div><img src="../assets/images/icon/search.png" onclick="openSearch()"
+    class="img-fluid blur-up lazyload" alt=""><i class="ti-search"
+    onclick="openSearch()"></i></div>
+    <div id="search-overlay" class="search-overlay">
+    <div><span class="closebtn" onclick="closeSearch()"
+    title="Close Overlay">×</span>
+    <div class="overlay-content">
+    <div class="container">
+    <div class="row">
+    <div class="col-xl-12">
+    <form>
+    <div class="form-group">
+    <input type="text" class="form-control"
+    id="exampleInputPassword1"
+    placeholder="Search a Product">
+    </div>
+    <button type="submit" class="btn btn-primary"><i
+    class="fa fa-search"></i></button>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </li>
+    <li class="onhover-div mobile-setting">
+    <div><img src="../assets/images/icon/setting.png"
+    class="img-fluid blur-up lazyload" alt=""><i
+    class="ti-settings"></i></div>
+    <div class="show-div setting">
+    <h6>language</h6>
+    <ul>
+    <li><a href="#">english</a></li>
+    <li><a href="#">french</a></li>
+    </ul>
+    <h6>currency</h6>
+    <ul class="list-inline">
+    <li><a href="#">euro</a></li>
+    <li><a href="#">rupees</a></li>
+    <li><a href="#">pound</a></li>
+    <li><a href="#">doller</a></li>
+    </ul>
+    </div>
+    </li>
+    <li class="onhover-div mobile-cart">
+    <div><img src="../assets/images/icon/cart.png"
+    class="img-fluid blur-up lazyload" alt=""><i
+    class="ti-shopping-cart"></i></div>
+    <span class="cart_qty_cls">0</span>
+    <ul class="show-div shopping-cart">
+    <li>
+    <div class="media">
+    <a href="#"><img alt="" class="me-3"
+    src="../assets/images/fashion/product/1.jpg"></a>
+    <div class="media-body">
+    <a href="#">
+    <h4>item name</h4>
+    </a>
+    <h4><span>1 x $ 299.00</span></h4>
+    </div>
+    </div>
+    <div class="close-circle"><a href="#"><i class="fa fa-times"
+    aria-hidden="true"></i></a></div>
+    </li>
+    <li>
+    <div class="media">
+    <a href="#"><img alt="" class="me-3"
+    src="../assets/images/fashion/product/2.jpg"></a>
+    <div class="media-body">
+    <a href="#">
+    <h4>item name</h4>
+    </a>
+    <h4><span>1 x $ 299.00</span></h4>
+    </div>
+    </div>
+    <div class="close-circle"><a href="#"><i class="fa fa-times"
+    aria-hidden="true"></i></a></div>
+    </li>
+    <li>
+    <div class="total">
+    <h5>subtotal : <span>$299.00</span></h5>
+    </div>
+    </li>
+    <li>
+    <div class="buttons"><a href="cart.html" class="view-cart">view
+    cart</a> <a href="#" class="checkout">checkout</a></div>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="bottom-part bottom-light">
+    <div class="container">
+    <div class="row">
+    <div class="col-xl-3">
+    <div class="category-menu d-none d-xl-block h-100">
+    <div id="toggle-sidebar" class="toggle-sidebar">
+    <i class="fa fa-bars sidebar-bar"></i>
+    <h5 class="mb-0">shop by category</h5>
+    </div>
+    </div>
+    <div class="sidenav fixed-sidebar marketplace-sidebar svg-icon-menu">
+    <nav>
+    <div>
+    <div class="sidebar-back text-start d-xl-none d-block"><i
+    class="fa fa-angle-left pe-2" aria-hidden="true"></i> Back</div>
+    </div>
+    <ul id="sub-menu" class="sm pixelstrap sm-vertical">
+    <li><a href="#">fruits & vegetable</a>
+    </li>
+    <li><a href="#">eggs, meat, fish</a>
+    <ul>
+    <li><a href="#">makeup</a></li>
+    <li><a href="#">skincare</a></li>
+    <li><a href="#">premium beaty</a></li>
+    <li><a href="#">more</a>
+    <ul>
+    <li><a href="#">fragrances</a></li>
+    <li><a href="#">luxury beauty</a></li>
+    <li><a href="#">hair care</a></li>
+    <li><a href="#">tools & brushes</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li><a href="#">food grains</a>
+    <ul>
+    <li><a href="#">shopper bags</a></li>
+    <li><a href="#">laptop bags</a></li>
+    <li><a href="#">clutches</a></li>
+    <li><a href="#">purses</a>
+    <ul>
+    <li><a href="#">purses</a></li>
+    <li><a href="#">wallets</a></li>
+    <li><a href="#">leathers</a></li>
+    <li><a href="#">satchels</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li><a href="#">bakery & dairy</a>
+    <ul>
+    <li><a href="#">sport shoes</a></li>
+    <li><a href="#">formal shoes</a></li>
+    <li><a href="#">casual shoes</a></li>
+    </ul>
+    </li>
+    <li><a href="#">beverages</a></li>
+    <li><a href="#">snacks</a>
+    <ul>
+    <li><a href="#">fashion jewellery</a></li>
+    <li><a href="#">caps and hats</a></li>
+    <li><a href="#">precious jewellery</a></li>
+    <li><a href="#">more..</a>
+    <ul>
+    <li><a href="#">necklaces</a></li>
+    <li><a href="#">earrings</a></li>
+    <li><a href="#">wrist wear</a></li>
+    <li><a href="#">accessories</a>
+    <ul>
+    <li><a href="#">ties</a></li>
+    <li><a href="#">cufflinks</a></li>
+    <li><a href="#">pockets squares</a></li>
+    <li><a href="#">helmets</a></li>
+    <li><a href="#">scarves</a></li>
+    <li><a href="#">more...</a>
+    <ul>
+    <li><a href="#">accessory gift sets</a></li>
+    <li><a href="#">travel accessories</a></li>
+    <li><a href="#">phone cases</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li><a href="#">belts & more</a></li>
+    <li><a href="#">wearable</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li><a href="#">beauty product</a></li>
+    <li><a href="#">gourment</a></li>
+    <li><a href="#">kitchen, garden</a></li>
+    <li><a href="#">kitchen, garden</a></li>
+    </ul>
+    </nav>
+    </div>
+    </div>
+    <div class="col-xl-9">
+    <div class="main-nav-center">
+    <nav id="main-nav" class="text-start">
+    <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+    <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+    <li>
+    <div class="mobile-back text-end">Back<i class="fa fa-angle-right ps-2"
+    aria-hidden="true"></i></div>
+    </li>
+    <li><a href="#">Home</a></li>
+    <li class="mega" id="hover-cls">
+    <a href="#">feature</a>
+    <ul class="mega-menu full-mega-menu">
+    <li>
+    <div class="container">
+    <div class="row">
+    <div class="col mega-box">
+    <div class="link-section">
+    <div class="menu-title">
+    <h5>add to cart</h5>
+    </div>
+    <div class="menu-content">
+    <ul>
+    <li><a href="nursery.html">cart modal
+    popup</a></li>
+    <li><a href="vegetables.html">qty.
+    counter
+    <i class="fa fa-bolt icon-trend"
+    aria-hidden="true"></i></a>
+    </li>
+    <li><a href="bags.html">cart top</a>
+    </li>
+    <li><a href="shoes.html">cart bottom</a>
+    </li>
+    <li><a href="watch.html">cart left</a>
+    </li>
+    <li><a href="tools.html">cart right</a>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="col mega-box">
+    <div class="link-section">
+    <div class="menu-title">
+    <h5>model</h5>
+    </div>
+    <div class="menu-content">
+    <ul>
+    <li><a href="index.html">Newsletter</a>
+    </li>
+    <li><a href="index.html">exit<i
+    class="ms-2 fa fa-bolt icon-trend"
+    aria-hidden="true"></i></a>
+    </li>
+    <li><a href="christmas.html">christmas</a>
+    </li>
+    <li><a href="furniture-3.html">black
+    friday</a></li>
+    <li><a href="fashion-4.html">cyber
+    monday</a></li>
+    <li><a href="fashion-6.html">new
+    year</a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="col mega-box">
+    <div class="link-section">
+    <div class="menu-title">
+    <h5>cookie bar</h5>
+    </div>
+    <div class="menu-content">
+    <ul>
+    <li><a href="index.html">bottom<i
+    class="ms-2 fa fa-bolt icon-trend"
+    aria-hidden="true"></i></a>
+    </li>
+    <li><a href="fashion-4.html">bottom
+    left</a></li>
+    <li><a href="bicycle.html">bottom
+    right</a></li>
+    </ul>
+    </div>
+    <div class="menu-title mt-2">
+    <h5>search</h5>
+    </div>
+    <div class="menu-content">
+    <ul>
+    <li><a href="marketplace-demo-2.html">ajax
+    search<i
+    class="ms-2 fa fa-bolt icon-trend"
+    aria-hidden="true"></i></a>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="col mega-box">
+    <div class="link-section">
+    <div class="menu-title">
+    <h5>invoice template</h5>
+    </div>
+    <div class="menu-content">
+    <ul>
+    <li><a target="_blank"
+    href="invoice-1.html">invoice
+    1</a></li>
+    <li><a target="_blank"
+    href="invoice-2.html">invoice
+    2</a></li>
+    <li><a target="_blank"
+    href="invoice-3.html">invoice
+    3</a></li>
+    <li><a target="_blank"
+    href="invoice-4.html">invoice
+    4</a></li>
+    <li><a target="_blank"
+    href="invoice-5.html">invoice
+    5</a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="col mega-box">
+    <div class="link-section">
+    <div class="menu-title">
+    <h5>email template</h5>
+    </div>
+    <div class="menu-content">
+    <ul>
+    <li><a target="_blank"
+    href="../email-template/email-order-success.html">order
+    success</a></li>
+    <li><a target="_blank"
+    href="../email-template/email-order-success-two.html">order
+    success 2</a></li>
+    <li><a target="_blank"
+    href="../email-template/email-template.html">email
+    template</a></li>
+    <li><a target="_blank"
+    href="../email-template/email-template-two.html">email
+    template 2</a></li>
+    </ul>
+    </div>
+    <div class="menu-title mt-2">
+    <h5>elements</h5>
+    </div>
+    <div class="menu-content">
+    <ul>
+    <li><a href="elements.html">
+    elements page<i
+    class="ms-2 fa fa-bolt icon-trend"
+    aria-hidden="true"></i>
+    </a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-12">
+    <img src="../assets/images/menu-banner.jpg"
+    class="img-fluid mega-img">
+    </div>
+    </div>
+    </div>
+    </li>
+    </ul>
+    </li>
+    <li>
+    <a href="#">shop</a>
+    <ul>
+    <li><a href="category-page(top-filter).html">top filter<span
+    class="new-tag">new</span></a></li>
+    <li><a href="category-page(modern).html">modern<span
+    class="new-tag">new</span></a></li>
+    <li><a href="category-page.html">left sidebar</a></li>
+    <li><a href="category-page(right).html">right sidebar</a></li>
+    <li><a href="category-page(no-sidebar).html">no sidebar</a></li>
+    <li><a href="category-page(sidebar-popup).html">sidebar popup</a>
+    </li>
+    <li><a href="category-page(metro).html">metro</a></li>
+    <li><a href="category-page(full-width).html">full width</a></li>
+    <li><a href="category-page(infinite-scroll).html">infinite
+    scroll</a></li>
+    <li><a href=category-page(3-grid).html>three grid</a></li>
+    <li><a href="category-page(6-grid).html">six grid</a></li>
+    <li><a href="category-page(list-view).html">list view</a></li>
+    </ul>
+    </li>
+    <li>
+    <a href="#">product</a>
+    <ul>
+    <li><a href="product-page(360-view).html">360 view <span
+    class="new-tag">new</span></a></li>
+    <li><a href="product-page(video-thumbnail).html">video
+    thumbnail<span class="new-tag">new</span></a></li>
+    <li>
+    <a href="#">sidebar</a>
+    <ul>
+    <li><a href="product-page.html">left sidebar</a></li>
+    <li><a href="product-page(right-sidebar).html">right
+    sidebar</a>
+    </li>
+    <li><a href="product-page(no-sidebar).html">no sidebar</a>
+    </li>
+    </ul>
+    </li>
+    <li>
+    <a href="#">thumbnail image</a>
+    <ul>
+    <li><a href="product-page(left-image).html">left image</a>
+    </li>
+    <li><a href="product-page(right-image).html">right image</a>
+    </li>
+    <li><a href="product-page(image-outside).html">image
+    outside</a></li>
+    </ul>
+    </li>
+    <li>
+    <a href="#">three column</a>
+    <ul>
+    <li><a href="product-page(3-col-left).html">thumbnail
+    left</a>
+    </li>
+    <li><a href="product-page(3-col-right).html">thumbnail
+    right</a>
+    </li>
+    <li><a href="product-page(3-column).html">thubnail
+    bottom</a>
+    </li>
+    </ul>
+    </li>
+    <li><a href="product-page(4-image).html">four image</a></li>
+    <li><a href="product-page(sticky).html">sticky</a></li>
+    <li><a href="product-page(accordian).html">accordian</a></li>
+    <li><a href="product-page(bundle).html">bundle</a></li>
+    <li><a href="product-page(image-swatch).html">image swatch </a></li>
+    <li><a href="product-page(vertical-tab).html">vertical tab</a></li>
+    </ul>
+    </li>
+    <li><a href="#">pages</a>
+    <ul>
+    <li>
+    <a href="#">vendor</a>
+    <ul>
+    <li><a href="vendor-dashboard.html">vendor dashboard</a>
+    </li>
+    <li><a href="vendor-profile.html">vendor profile</a></li>
+    <li><a href="become-vendor.html">become vendor</a></li>
+    </ul>
+    </li>
+    <li>
+    <a href="#">account</a>
+    <ul>
+    <li><a href="wishlist.html">wishlist</a></li>
+    <li><a href="cart.html">cart</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="login.html">login</a></li>
+    <li><a href="register.html">register</a></li>
+    <li><a href="contact.html">contact</a></li>
+    <li><a href="forget_pwd.html">forget password</a></li>
+    <li><a href="profile.html">profile</a></li>
+    <li><a href="checkout.html">checkout</a></li>
+    <li><a href="order-success.html">order success</a></li>
+    <li><a href="order-tracking.html">order tracking<span
+    class="new-tag">new</span></a></li>
+    </ul>
+    </li>
+    <li>
+    <a href="#">portfolio</a>
+    <ul>
+    <li><a href="">grid</a>
+    <ul>
+    <li><a href="grid-2-col.html">grid
+    2</a></li>
+    <li><a href="grid-3-col.html">grid
+    3</a></li>
+    <li><a href="grid-4-col.html">grid
+    4</a></li>
+    </ul>
+    </li>
+    <li><a href="">masonry</a>
+    <ul>
+    <li><a href="masonary-2-grid.html">grid 2</a></li>
+    <li><a href="masonary-3-grid.html">grid 3</a></li>
+    <li><a href="masonary-4-grid.html">grid 4</a></li>
+    <li><a href="masonary-fullwidth.html">full width</a>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li><a href="about-page.html">about us</a></li>
+    <li><a href="search.html">search</a></li>
+    <li><a href="review.html">review</a>
+    </li>
+    <li>
+    <a href="#">compare</a>
+    <ul>
+    <li><a href="compare.html">compare</a></li>
+    <li><a href="compare-2.html">compare-2</a></li>
+    </ul>
+    </li>
+    <li><a href="collection.html">collection</a></li>
+    <li><a href="lookbook.html">lookbook</a></li>
+    <li><a href="sitemap.html">site map</a>
+    </li>
+    <li><a href="404.html">404</a></li>
+    <li><a href="coming-soon.html">coming soon</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    </li>
+    <li>
+    <a href="#">blog</a>
+    <ul>
+    <li><a href="blog-page.html">left sidebar</a></li>
+    <li><a href="blog(right-sidebar).html">right sidebar</a></li>
+    <li><a href="blog(no-sidebar).html">no sidebar</a></li>
+    <li><a href="blog-details.html">blog details</a></li>
+    </ul>
+    </li>
+    </ul>
+    </nav>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </header>

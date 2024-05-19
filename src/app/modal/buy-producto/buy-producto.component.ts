@@ -19,7 +19,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./buy-producto.component.css']
 })
 export class BuyProductoComponent  {
-  @Output() loginSuccessful = new EventEmitter<void>();
+ /*@Output() loginSuccessful = new EventEmitter<void>();
   productosEnCarrito: Product[] = [];
   pdfBytes: Uint8Array | undefined;
 
@@ -95,7 +95,7 @@ export class BuyProductoComponent  {
     // Abre la ventana de WhatsApp
     window.open(whatsappLink, '_blank');
   }
-
+*/
 
 
 

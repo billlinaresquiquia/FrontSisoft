@@ -11,7 +11,7 @@ import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
   styleUrls: ['./insert-producto.component.css']
 })
 export class InsertProductoComponent  {
-  productForm = new FormGroup({
+  /*productForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
     precio: new FormControl('', [Validators.required, Validators.pattern(/^\d+\.?\d{0,2}$/)]),
     descripcion: new FormControl(''),
@@ -85,5 +85,5 @@ export class InsertProductoComponent  {
   onGridReady(params: GridReadyEvent) {
     console.log('Grid is ready!', params);
 
-  }
+  }*/
 }
