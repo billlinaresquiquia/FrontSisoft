@@ -1,59 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductoService } from 'src/app/services/producto.service'; // Adjust the path as necessary
+import { Component, AfterViewInit,ElementRef,ChangeDetectorRef,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ElementRef } from '@angular/core';
-import { Product } from 'src/app/Interfaces/product'; // Adjust the path as necessary
+import { ViewProductoComponent } from 'src/app/modal/view-producto/view-producto.component';
+import { ProductoService } from 'src/app/services/producto.service';
+import { Product } from 'src/app/Interfaces/product';
 
+declare var $: any;
 @Component({
   selector: 'app-view',
-  templateUrl: './view.component.html', 
-  
-
-  styleUrls: ['./view.component.css'] // Adjust the path as necessary
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.css']
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent implements OnInit, AfterViewInit  {
 
-  productos: any[] = [];
-  productosEnCarrito: any[];
-  responsiveOptions: any[] | undefined;
+  productos: Product[] = [];
 
   constructor(
     private productService: ProductoService,
     private router: Router,
-    private el: ElementRef
-  ) {
-    this.productosEnCarrito = this.productService.obtenerProductosEnCarrito();
+    private el: ElementRef,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.getAllProducts();
   }
 
-  async ngOnInit(): Promise<void> {
-    await this.getAllProducts();
-    this.responsiveOptions = [
-      {
-        breakpoint: '1024px',
-        numVisible: 5
+  ngAfterViewInit(): void {
+    this.cdr.detectChanges(); // Asegurarnos de que los cambios se hayan detectado antes de inicializar LightSlider
+  }
+
+  getAllProducts() {
+    this.productService.getAllProducts().subscribe(
+      (data: Product[]) => {
+        this.productos = data;
+        console.log('Productos obtenidos con éxito', this.productos);
+        this.initializeLightSlider();
       },
-      {
-        breakpoint: '768px',
-        numVisible: 3
-      },
-      {
-        breakpoint: '560px',
-        numVisible: 1
+      (error) => {
+        console.error('Error al obtener productos', error);
       }
-    ];
+    );
   }
 
-  async getAllProducts(): Promise<void> {
-    try {
-      const data: Product[] = await this.productService.getAllProducts().toPromise() || [];
-      // Ensure products have the correct image properties
-      this.productos = data.map(product => ({
-        itemImageSrc: product.imagen1,
-        thumbnailImageSrc: product.imagen2 // Use one of the thumbnails as the main one
-      }));
-      console.log('Productos obtenidos con éxito', this.productos);
-    } catch (error) {
-      console.error('Error al obtener productos', error);
-    }
+  initializeLightSlider() {
+    setTimeout(() => {
+      $('#lightSlider').lightSlider({
+        gallery: true,
+        item: 1,
+        loop: true,
+        slideMargin: 0,
+        thumbItem: 9
+      });
+    }, 0);
   }
 }

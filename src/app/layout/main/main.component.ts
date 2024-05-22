@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 import { ViewProductoComponent } from 'src/app/modal/view-producto/view-producto.component';
 import { ProductoService } from 'src/app/services/producto.service';
 import { Product } from 'src/app/Interfaces/product';
-
-
-
+import 'slick-carousel';
+import 'owl.carousel';
 declare var $: any; 
 @Component({
   selector: 'app-main',
@@ -32,16 +31,82 @@ export class MainComponent implements AfterViewInit{
 
     ) { this.productosEnCarrito = this.productService.obtenerProductosEnCarrito();}
 
-    ngAfterViewInit() {
-      $('#carouselExampleSlidesOnly').carousel({
-        interval: 2000 // Ajusta el tiempo de intervalo entre slides (en milisegundos)
+    slides = [
+      { img: '../assets/images/electronics/categories/audi.png' },
+      { img: '../assets/images/electronics/categories/fuente.png' },
+      { img: '../assets/images/electronics/categories/camara-de-seguridad.png' },
+      { img: '../assets/images/electronics/categories/impresora.png' },
+      { img: '../assets/images/electronics/categories/LAPTOPS.png' },
+      { img: '../assets/images/electronics/categories/monitores.png' },
+      { img: '../assets/images/electronics/categories/mousesss.png' },
+      { img: '../assets/images/electronics/categories/parla.png' },
+      { img: '../assets/images/electronics/categories/pc.png' },
+      { img: '../assets/images/electronics/categories/teclados.png' },
+      // Agrega más imágenes aquí según necesites
+    ];
+    otherSlides = [
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/toshiba.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/kingston.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/gigabyte.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/redragon.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/razer.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/msi.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/dell.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/intel.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/amd.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/lenovo.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/logitech.jpg' },
+      { img: 'https://www.yamoshi.com.pe/img/cms/Marcas/Nuevor/corsair.jpg' },
+      
+      // Agrega más imágenes aquí según necesites
+    ];
+    ngAfterViewInit(): void {
+
+      $('.single-item').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        adaptiveHeight: true,
+        autoplay: true,
+      autoplaySpeed: 6000
       });
+
+
+      $(document).ready(() => {
+        $('.slick-carousel').slick({
+          lazyLoad: 'ondemand',
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          dots: true,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          arrows: true
+        });
+      });
+
+      $(document).ready(() => {
+      $('.slick-carousel-other').slick({
+        lazyLoad: 'ondemand',
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        dots: true,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: true
+      });
+    });
+  
     }
 
     ngOnInit(): void {
       this.getAllProducts();
     }
-  
+    ngOnDestroy() {
+      $('.slick-carousel').slick('unslick');
+    }
     getAllProducts() {
       this.productService.getAllProducts().subscribe(
         (data: Product[]) => {

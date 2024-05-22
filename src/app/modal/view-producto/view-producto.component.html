@@ -1,17 +1,17 @@
-<div style="height: 20vh"></div>
+ <!--<div style="height: 20vh"></div>
     <section class="item-details " id="section-product">
         <div >
             <div class="top-area">
-                <div class="row align-items-center"  >
+                <div class="row align-items-center"  (click)="seleccionarProducto(producto)">
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-images">
                             <main id="gallery">
                               <div class="main-img" id="mainImageContainer">
-                                <img src="../assets/images/electronics/banner/13.jpg" id="current" alt="#">
+                                <img [src]="producto.imagen" id="current" alt="#">
                             </div>
                             <div class="images">
-                                <img src="../assets/images/electronics/banner/15.jpg" class="img" alt="#" id="secondImage">
-                                <img src="../assets/images/electronics/banner/14.jpg" class="img" alt="#" id="secondImage">
+                                <img [src]="producto.imagen" class="img" alt="#" id="secondImage">
+                                <img [src]="producto.imagen2" class="img" alt="#" id="secondImage">
                             </div>
 
                             </main>
@@ -20,7 +20,7 @@
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info" >
                             <h2 class="title">{{ producto.nombre }}</h2>
-
+           
                             <h3 class="price">S/{{producto.precio}}</h3>
                             <p class="info-text">{{producto.descripcion}}</p>
 
@@ -38,11 +38,11 @@
                 </div>
             </div>
         </div>
-   
+    </section>
 
 
 
-    <!--<div class="modal fade" id="shopModal" tabindex="-1" aria-labelledby="shopModalLabel" aria-hidden="true" style="font-size: 10px;font: none;top: 25%;">
+    <div class="modal fade" id="shopModal" tabindex="-1" aria-labelledby="shopModalLabel" aria-hidden="true" style="font-size: 10px;font: none;top: 25%;">
       <div class="modal-dialog" style="font-size: 10px;font: none;">
           <div class="modal-body">
             <figure class="pizza" *ngIf="selectedProduct">

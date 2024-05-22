@@ -52,6 +52,16 @@ registroFallido = false;
     this.productosEnCarrito = this.productoservice.obtenerProductosEnCarrito();
   }
 
+  abrirlogin(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/home', 'login']);
+  
+  }
+    abrirregister(event: Event) {
+      event.preventDefault();
+      this.router.navigate(['/home', 'registro']);
+    }  
+
 /*
   togglePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;

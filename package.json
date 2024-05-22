@@ -30,6 +30,7 @@
     "jquery": "^3.7.1",
     "jquery-zoom": "^1.7.21",
     "jquery.sticky": "^0.2.1",
+    "lightslider": "^1.1.6",
     "ngx-dropzone": "^3.1.0",
     "ngx-image-zoom": "^2.1.0",
     "owl.carousel": "^2.3.4",
@@ -37,6 +38,7 @@
     "primeicons": "^6.0.1",
     "primeng": "^16.2.0",
     "rxjs": "~7.8.0",
+    "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0",
     "zoomio": "^2.0.2"
